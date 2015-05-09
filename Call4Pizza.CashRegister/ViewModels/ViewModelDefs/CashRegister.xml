@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewModelDef>
+  <Name>CashRegister</Name>
+  <Commands>
+    <ViewModelCommandRef>
+      <Name>AddPizza</Name>
+    </ViewModelCommandRef>
+    <ViewModelCommandRef>
+      <Name>AddIngredient</Name>
+    </ViewModelCommandRef>
+    <ViewModelCommandRef>
+      <Name>CreateOrder</Name>
+    </ViewModelCommandRef>
+  </Commands>
+  <Properties>
+    <ViewModelPropertyDef>
+      <Name>LastName</Name>
+      <TypeName>string</TypeName>
+    </ViewModelPropertyDef>
+    <ViewModelPropertyDef>
+      <Name>FirstName</Name>
+      <TypeName>string</TypeName>
+    </ViewModelPropertyDef>
+    <ViewModelPropertyDef>
+      <Name>EMail</Name>
+      <TypeName>string</TypeName>
+    </ViewModelPropertyDef>
+    <ViewModelPropertyDef>
+      <Name>Total</Name>
+      <TypeName>decimal</TypeName>
+    </ViewModelPropertyDef>
+    <ViewModelPropertyDef>
+      <Name>PizzaCapricciosa</Name>
+      <TypeName>int</TypeName>
+    </ViewModelPropertyDef>
+    <ViewModelPropertyDef>
+      <Name>PizzaDiavola</Name>
+      <TypeName>int</TypeName>
+    </ViewModelPropertyDef>
+    <ViewModelPropertyDef>
+      <Name>Beer</Name>
+      <TypeName>int</TypeName>
+    </ViewModelPropertyDef>
+  </Properties>
+</ViewModelDef>

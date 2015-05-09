@@ -1,0 +1,231 @@
+﻿<#@ template language="C#" debug="true" hostSpecific="true" #>
+<#@ assembly name="System.Core.dll" #>
+<#@ assembly name="System.Xml.dll" #>
+
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Xml.Serialization" #>
+<#@ import namespace="System.Reflection" #>
+
+<#@ include file="T4Toolbox.tt" #>
+
+<#
+	var defsDirectory = Path.Combine(Path.GetDirectoryName(this.Host.TemplateFile), "ViewModelDefs");
+	foreach(var viewModelDefFileName in System.IO.Directory.GetFiles(defsDirectory))
+	{
+		var viewModelDef = ReadViewModelDef(viewModelDefFileName);
+		var t = Activator.CreateInstance<ViewModelTemplate>();
+		t.ViewModelDef = viewModelDef;
+		t.RenderToFile(viewModelDef.Name + "ViewModel.g.cs");
+	}
+#>
+<#+
+	public class ViewModelDef
+	{
+		public string Name { get; set; }
+		public ViewModelCommandRef[] Commands { get; set; }
+		public ViewModelPropertyDef[] Properties { get; set; }
+
+		public ViewModelDef()
+		{
+			Commands = new ViewModelCommandRef[] {};
+			Properties = new ViewModelPropertyDef[] {};
+		}
+	}
+#>
+<#+
+	public class ViewModelCommandRef
+	{
+		public string Name { get; set; }
+	}
+#>
+<#+
+	public class ViewModelPropertyDef
+	{
+		public string Name { get; set; }
+		public string TypeName { get; set; }
+	}
+#>
+<#+
+	ViewModelDef[] ReadViewModelDefs(string filename)
+	{
+		XmlSerializer serializer = new XmlSerializer(typeof(ViewModelDef[]));
+		string templateDirectory = Path.GetDirectoryName(this.Host.TemplateFile);
+		XmlReader reader = new XmlTextReader(Path.Combine(templateDirectory, filename));	
+		var viewModelDefs = (ViewModelDef[]) serializer.Deserialize(reader);
+		return viewModelDefs;
+	}
+#>
+<#+
+	ViewModelDef ReadViewModelDef(string filename)
+	{
+		XmlSerializer serializer = new XmlSerializer(typeof(ViewModelDef));
+		//string templateDirectory = Path.GetDirectoryName(this.Host.TemplateFile);
+		// XmlReader reader = new XmlTextReader(Path.Combine(templateDirectory, filename));	
+		XmlReader reader = new XmlTextReader(filename);	
+		var viewModelDef = (ViewModelDef) serializer.Deserialize(reader);
+		return viewModelDef;
+	}
+#>
+<#+
+	public class ViewModelTemplate: Template 
+	{
+	    public override string TransformText()
+    {
+#>
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.ComponentModel;
+using System.Windows;
+using System.Windows.Input;
+
+using Call4Pizza.CashRegister.ViewModels.Base;
+
+namespace Call4Pizza.CashRegister.ViewModels
+{
+	#region Class <#=ViewModelDef.Name #>ViewModel
+
+	public partial class <#=ViewModelDef.Name #>ViewModel: BaseViewModel
+    {
+		<#+ Commands(ViewModelDef); #>
+
+		partial void OnException(Exception ex);
+
+		<#+ Properties(ViewModelDef); #>
+	}
+	
+	#endregion
+}
+<#+
+		return this.GenerationEnvironment.ToString();
+	} // public override string TransformText()
+		public ViewModelDef ViewModelDef { get; set; }
+#>
+<#+
+		protected void Commands(ViewModelDef viewModelDef)
+		{
+			foreach(ViewModelCommandRef viewModelCommandRef in viewModelDef.Commands)
+			{
+				LocalCommand(viewModelCommandRef.Name);
+			}
+		}
+#>
+<#+
+		protected void Properties(ViewModelDef viewModelDef)
+		{
+			foreach(var viewModelPropertyDef in viewModelDef.Properties)
+			{
+				Property(viewModelPropertyDef.Name, viewModelPropertyDef.TypeName);
+			}
+		}
+#>
+<#+
+		protected void LocalCommand(string name)
+		{
+			string lcase = name.Substring(0,1).ToLower() + name.Substring(1);
+			string ucase = name.Substring(0,1).ToUpper() + name.Substring(1);
+			string argsTypeName = ucase + "Args";
+			#>	
+			#region Local Command <#= ucase #>
+			
+			public partial class <#= argsTypeName #>: BaseArgs
+			{
+			}
+			
+			public <#= argsTypeName #> <#= ucase #>CommandArgs
+			{
+				get
+				{
+					<#= argsTypeName #> args = new <#= argsTypeName #> {
+					};
+					return args;
+				}
+			}
+
+			partial void On<#= ucase #>(<#= argsTypeName #> args);
+
+			partial void On<#= ucase #>Enable(Action<bool> enableHandler);
+
+			private RelayCommand<<#= argsTypeName #>> _<#= lcase #>; // ICommand
+
+			public RelayCommand<<#= argsTypeName #>> <#= ucase #> // ICommand
+			{
+				get
+				{
+					if (_<#= lcase #> == null)
+					{
+						_<#= lcase #> = new RelayCommand<<#= argsTypeName #>>(new Action<<#= argsTypeName #>>(
+							_ =>
+							{
+								try
+								{
+									On<#= ucase #>(_);
+								}
+								catch(Exception ex)
+								{
+									OnException(ex);
+								}
+							}
+						),
+						_ => {
+							bool enabled = true;
+							On<#= ucase #>Enable(enable => {
+								enabled = enable;
+							});
+							return enabled;
+						});
+					}
+					return _<#= lcase #>;
+				}
+			}
+			
+			#endregion		
+			<#+
+		}
+#>
+<#+
+		protected void Property(string name, string typeName)
+		{
+			string lcase = name.Substring(0,1).ToLower() + name.Substring(1);
+			string ucase = name.Substring(0,1).ToUpper() + name.Substring(1);
+			#>
+			#region <#=ucase #> Property
+			
+			private <#=typeName #> _<#=lcase #>;
+			
+			partial void OnSet<#=ucase #>(<#=typeName #> last<#=ucase #>, Action<<#=typeName #>> handleSet);
+			
+			private void Set<#=ucase #>(<#=typeName #> alternateValue)
+			{
+				_<#=lcase #> = alternateValue;
+			}
+
+			public <#=typeName #> <#=ucase #>
+			{
+				get
+				{
+					return _<#=lcase #>;
+				}
+				
+				set
+				{
+					if (value == _<#=lcase #>) return;
+					var last<#=ucase #> = _<#=lcase #>;
+					_<#=lcase #> = value;
+					OnSet<#=ucase #>(
+						last<#=ucase #>
+						, new Action<<#=typeName #>>(Set<#=ucase #>));
+					Notify("<#=ucase #>");
+				}
+			}
+			
+			#endregion
+			<#+
+		}
+#>
+<#+
+	}
+#>

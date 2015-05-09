@@ -1,0 +1,101 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Call4Pizza.CashRegister", "Call4Pizza.CashRegister\Call4Pizza.CashRegister.csproj", "{DE7460EB-DE7D-4BCC-AECA-37A33DDF54C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Call4Pizza.Models", "Calll4Pizza.Models\Call4Pizza.Models.csproj", "{44EFFFE2-87C3-4D08-B895-1074FA0FC8E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Call4Pizza.Http.Client", "Call4Pizza.Http.Client\Call4Pizza.Http.Client.csproj", "{A04B82C4-7E0D-4CC1-A8F6-0495D8F370EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Call4Pizza.ServiceBus.Client", "Call4Pizza.ServiceBus.Client\Call4Pizza.ServiceBus.Client.csproj", "{15DC78E8-4378-4834-9B91-117BE93283AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Call4Pizza.CommandHandler", "Call4Pizza.CommandHandler\Call4Pizza.CommandHandler.csproj", "{BAA621F4-4E45-4283-9DE4-4E87698EB26F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Call4Pizza.Services", "Call4Pizza.Services\Call4Pizza.Services.csproj", "{62E03B27-8C15-431C-AB13-5E65C834C1E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{722AB2B6-9A61-4C3B-9A29-1F76C9838AE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nodes", "Nodes", "{C2F02228-A325-4BAC-9093-AC65D3EBCD5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{A6A8E6B0-8838-489D-8750-7A7E86AD33AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Call4Pizza.Storage.Client", "Call4Pizza.Storage.Client\Call4Pizza.Storage.Client.csproj", "{0E91EE42-EF88-4D39-A945-519F6F29A40B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Call4Pizza.EventHandler", "Call4Pizza.EventHandler\Call4Pizza.EventHandler.csproj", "{5AAE0006-38CA-42AD-8ABD-6827EE65C500}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5C7F196D-8881-4D0B-B040-B7F66C2F8ECD}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Call4Pizza.Totem", "Call4Pizza.Totem\Call4Pizza.Totem.csproj", "{5B2A6877-FFC3-42EA-BB7C-06D059502769}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Call4Pizza.SQL.Client", "Call4Pizza.SQL.Client\Call4Pizza.SQL.Client.csproj", "{681085FD-1E95-417E-869F-178208D0D654}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE7460EB-DE7D-4BCC-AECA-37A33DDF54C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE7460EB-DE7D-4BCC-AECA-37A33DDF54C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE7460EB-DE7D-4BCC-AECA-37A33DDF54C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE7460EB-DE7D-4BCC-AECA-37A33DDF54C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44EFFFE2-87C3-4D08-B895-1074FA0FC8E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44EFFFE2-87C3-4D08-B895-1074FA0FC8E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44EFFFE2-87C3-4D08-B895-1074FA0FC8E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44EFFFE2-87C3-4D08-B895-1074FA0FC8E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A04B82C4-7E0D-4CC1-A8F6-0495D8F370EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A04B82C4-7E0D-4CC1-A8F6-0495D8F370EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A04B82C4-7E0D-4CC1-A8F6-0495D8F370EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A04B82C4-7E0D-4CC1-A8F6-0495D8F370EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15DC78E8-4378-4834-9B91-117BE93283AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15DC78E8-4378-4834-9B91-117BE93283AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15DC78E8-4378-4834-9B91-117BE93283AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15DC78E8-4378-4834-9B91-117BE93283AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAA621F4-4E45-4283-9DE4-4E87698EB26F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA621F4-4E45-4283-9DE4-4E87698EB26F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA621F4-4E45-4283-9DE4-4E87698EB26F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA621F4-4E45-4283-9DE4-4E87698EB26F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62E03B27-8C15-431C-AB13-5E65C834C1E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62E03B27-8C15-431C-AB13-5E65C834C1E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62E03B27-8C15-431C-AB13-5E65C834C1E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62E03B27-8C15-431C-AB13-5E65C834C1E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E91EE42-EF88-4D39-A945-519F6F29A40B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E91EE42-EF88-4D39-A945-519F6F29A40B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E91EE42-EF88-4D39-A945-519F6F29A40B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E91EE42-EF88-4D39-A945-519F6F29A40B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AAE0006-38CA-42AD-8ABD-6827EE65C500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AAE0006-38CA-42AD-8ABD-6827EE65C500}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AAE0006-38CA-42AD-8ABD-6827EE65C500}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AAE0006-38CA-42AD-8ABD-6827EE65C500}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B2A6877-FFC3-42EA-BB7C-06D059502769}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B2A6877-FFC3-42EA-BB7C-06D059502769}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B2A6877-FFC3-42EA-BB7C-06D059502769}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B2A6877-FFC3-42EA-BB7C-06D059502769}.Release|Any CPU.Build.0 = Release|Any CPU
+		{681085FD-1E95-417E-869F-178208D0D654}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{681085FD-1E95-417E-869F-178208D0D654}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{681085FD-1E95-417E-869F-178208D0D654}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{681085FD-1E95-417E-869F-178208D0D654}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DE7460EB-DE7D-4BCC-AECA-37A33DDF54C8} = {C2F02228-A325-4BAC-9093-AC65D3EBCD5E}
+		{44EFFFE2-87C3-4D08-B895-1074FA0FC8E8} = {A6A8E6B0-8838-489D-8750-7A7E86AD33AA}
+		{A04B82C4-7E0D-4CC1-A8F6-0495D8F370EA} = {722AB2B6-9A61-4C3B-9A29-1F76C9838AE8}
+		{15DC78E8-4378-4834-9B91-117BE93283AE} = {722AB2B6-9A61-4C3B-9A29-1F76C9838AE8}
+		{BAA621F4-4E45-4283-9DE4-4E87698EB26F} = {C2F02228-A325-4BAC-9093-AC65D3EBCD5E}
+		{62E03B27-8C15-431C-AB13-5E65C834C1E2} = {C2F02228-A325-4BAC-9093-AC65D3EBCD5E}
+		{0E91EE42-EF88-4D39-A945-519F6F29A40B} = {722AB2B6-9A61-4C3B-9A29-1F76C9838AE8}
+		{5AAE0006-38CA-42AD-8ABD-6827EE65C500} = {C2F02228-A325-4BAC-9093-AC65D3EBCD5E}
+		{5B2A6877-FFC3-42EA-BB7C-06D059502769} = {C2F02228-A325-4BAC-9093-AC65D3EBCD5E}
+		{681085FD-1E95-417E-869F-178208D0D654} = {722AB2B6-9A61-4C3B-9A29-1F76C9838AE8}
+	EndGlobalSection
+EndGlobal
